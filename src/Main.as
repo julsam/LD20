@@ -5,7 +5,7 @@ package
 	
 	public class Main extends Engine
 	{
-		[SWF(width="640",height="480")]
+		[SWF(width="800",height="600")]
 		public function Main():void 
 		{
 			//super(640, 480, 60, false);
