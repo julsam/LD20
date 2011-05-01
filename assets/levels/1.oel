@@ -1,4 +1,4 @@
-<level levelEnvironment="village_outdoor" bgcolor="0xa0d0f0">
+<level levelEnvironment="village_outdoor" bgcolor="0xa0d0f0" cloudBottomY="399" bush1Y="507" bush2Y="507">
   <width>800</width>
   <height>600</height>
   <solids>
@@ -255,8 +255,8 @@
     <TP x="544" y="496" destination="2"/>
     <TP x="16" y="464" destination="2"/>
     <TP_Arrival x="64" y="496" from="2"/>
-    <door x="256" y="544"/>
-    <door x="400" y="544"/>
+    <door x="256" y="544" destination="3"/>
+    <door x="400" y="544" destination="1"/>
     <shop_panel x="240" y="480"/>
     <TP x="528" y="560" destination="3"/>
     <TP_Arrival x="512" y="544" from="3"/>

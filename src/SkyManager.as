@@ -1,6 +1,7 @@
 package
 {
 	import flash.utils.ByteArray;
+	import flash.utils.Dictionary;
 	
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
@@ -11,12 +12,12 @@ package
 	
 	public class SkyManager
 	{
-		public var _opt:Object = new Object();
+		public var _opt:Dictionary = new Dictionary();
 		public var _cloudCount:uint = 0;
 		
-		public function SkyManager(opt:Object=null) 
+		public function SkyManager(opt:Dictionary=null) 
 		{
-			_opt["type"] = "village_outdoor";
+			_opt["levelEnvironment"] = "village_outdoor";
 			_opt["cloudBottomY"] = 399;
 			_opt["bush1Y"] = 507;
 			_opt["bush2Y"] = 507;
@@ -24,16 +25,16 @@ package
 			
 			if (opt != null)
 			{
-				for each(var o:String in opt)
+				for(var o:String in opt)
 				{
-					if (o)
+					if (opt[o] != null)
 					{
 						_opt[o] = opt[o];
 					}
 				}
 			}
 			
-			if (_opt["type"] == "village_outdoor" || _opt["type"] == "dungeon_outdoor")
+			if (_opt["levelEnvironment"] == "village_outdoor" || _opt["levelEnvironment"] == "dungeon_outdoor")
 			{
 				var skyY:int = FP.height - FP.getBitmap(Assets.BUSH1).height - 93 - 15;
 				FP.world.add(new Parallax(0, _opt["cloudBottomY"], 0, 0, new Backdrop(Assets.CLOUD3, true, false)));
@@ -43,7 +44,7 @@ package
 				
 				while (_cloudCount < 5)
 				{
-					FP.world.add(new Cloud(FP.rand(FP.width-30), FP.rand(FP.height-10)));
+					FP.world.add(new Cloud(FP.rand(FP.width-30), FP.rand(FP.height-10), FP.clamp(FP.rand(28), 18, FP.rand(28))));
 					_cloudCount++;
 				}
 				
@@ -59,9 +60,9 @@ package
 		
 		public function update():void
 		{
-			if (_cloudCount < 5)
+			if (_cloudCount < 5 && (_opt["levelEnvironment"] == "village_outdoor" || _opt["levelEnvironment"] == "dungeon_outdoor"))
 			{
-				FP.world.add(new Cloud(-FP.getBitmap(Assets.CLOUD4).width, FP.rand(FP.height-10)));
+				FP.world.add(new Cloud(-FP.getBitmap(Assets.CLOUD4).width, FP.rand(FP.height-10), FP.clamp(FP.rand(28), 18, FP.rand(28))));
 				_cloudCount++;
 			}
 		}

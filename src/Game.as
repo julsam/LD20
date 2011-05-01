@@ -25,11 +25,7 @@ package
 			Global.transition = new Transition();
 			
 			Global.skyMgr = new SkyManager();
-			/*
-			add(new Solid(10, 580, 620, 10)); // ground
-			add(new Solid(260, 560, 20, 20)); // short wall
-			add(new Solid(560, 40, 20, 540)); // big wall
-			*/
+	
 			
 			Input.define("Left", Key.LEFT);
 			Input.define("Right", Key.RIGHT);
@@ -76,14 +72,19 @@ package
 			FP.width = xml.width;
 			FP.height = xml.height;
 			
-			var skyOptions:Object = new Object();
+			var skyOptions:Dictionary = new Dictionary();
 			skyOptions["levelEnvironment"] = xml.@levelEnvironment;
 			skyOptions["cloudBottomY"] = xml.@cloudBottomY;
 			skyOptions["bush1Y"] = xml.@bush1Y;
 			skyOptions["bush2Y"] = xml.@bush2Y;
 			skyOptions["bgcolor"] = xml.@bgcolor;
+			
+			for(var s:String in skyOptions)
+			{
+				trace(skyOptions[s]);
+			}
+			
 			Global.skyMgr = new SkyManager(skyOptions);
-			trace(xml.@levelEnvironment);
 			
 			add(new Entity(0, 0, tileset = new Tilemap(Assets.TILESET, FP.width, FP.height, Global.grid, Global.grid)));
 			
@@ -95,9 +96,6 @@ package
 			else
 			{
 				for each (o in xml.objects[0].TP_Arrival) {
-					trace(Global.previousLevel);
-					trace("\n");
-					trace(xml.objects[0].TP_Arrival.@from);
 					if (o.@from == Global.previousLevel)
 					{
 						// Player
@@ -122,7 +120,7 @@ package
 			
 			// Doors
 			for each (o in xml.objects[0].door) {
-				add(new Door(o.@x, o.@y)); 
+				add(new Door(o.@x, o.@y, o.@destination)); 
 			}
 			
 			// Shop panel
@@ -150,7 +148,7 @@ package
 			removeAll();
 			
 			Global.changeLevel = false;
-			trace("currentLevel (previous) : "+Global.currentLevel+"\n");
+			
 			Global.previousLevel = Global.currentLevel;
 			
 			loadLevel(Global.levelToLoad);

@@ -6,20 +6,18 @@ package
 	public class Main extends Engine
 	{
 		[SWF(width="800",height="600")]
+		
 		public function Main():void 
 		{
-			//super(640, 480, 60, false);
 			super(400, 300, 60, false);
 			FP.screen.scale = 2;
-			FP.screen.color = 0xa0d0f0;
-			
+			FP.screen.color = 0xa0d0f0;			
 		}
 		
 		override public function init():void
 		{
 			FP.world = new Game();
-		}
-		
+		}		
 	}
 	
 }

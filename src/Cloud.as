@@ -7,13 +7,13 @@ package
 	
 	public class Cloud extends Entity
 	{
-		public var _dir:Number;
+		public var _speed:Number;
 		
-		public function Cloud(x:Number=0, y:Number=0, direction:Number=20)
+		public function Cloud(x:Number=0, y:Number=0, speed:Number=20)
 		{
 			super(x, y);
 			
-			_dir = direction;
+			_speed = speed;
 			
 			setHitbox(FP.getBitmap(Assets.CLOUD4).width, FP.getBitmap(Assets.CLOUD4).height);
 			
@@ -23,7 +23,7 @@ package
 		
 		override public function update():void
 		{	
-			x += _dir * FP.elapsed;
+			x += _speed * FP.elapsed;
 			
 			if (x > FP.width || x + width < -200)
 				destroy();

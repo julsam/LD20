@@ -1,4 +1,4 @@
-<level levelEnvironment="village_indoor" bgcolor="0x000000">
+<level levelEnvironment="village_indoor" bgcolor="0x000000" cloudBottomY="399" bush1Y="507" bush2Y="507">
   <width>800</width>
   <height>600</height>
   <solids>

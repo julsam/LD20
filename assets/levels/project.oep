@@ -19,7 +19,11 @@
 	</tilesets> 
 	<objects>
 		<object name="playerStart" image="playerStart.png" width="16" height="16" limit="1"/>
-		<object name="door" image="door.png" width="32" height="32" />
+		<object name="door" image="door.png" width="32" height="32">
+			<values>
+				<integer name="destination" min="1" max="500" default="1" />
+			</values>
+		</object>
 		<object name="TP" image="TP.png" width="16" height="16">
 			<values>
 				<integer name="destination" min="1" max="500" default="1" />
