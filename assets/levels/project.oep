@@ -1,20 +1,25 @@
 <project>
 	<name>project</name>
 	<settings>
-		<defaultWidth>800</defaultWidth>
-		<defaultHeight>600</defaultHeight>
+		<defaultWidth>400</defaultWidth>
+		<defaultHeight>300</defaultHeight>
 		<maxWidth>4096</maxWidth>
 		<maxHeight>2048</maxHeight>
 		<workingDirectory>../sprites</workingDirectory>
 	</settings>
 	<values>
-		<string name="levelEnvironment" default="dungeon" maxChars="50" />
+		<string name="levelEnvironment" default="dungeon_outdoor" maxChars="50" />
+		<string name="bgcolor" default="0xa0d0f0" maxChars="8" />
+		<number name="cloudBottomY" default="399" />
+		<number name="bush1Y" default="507" />
+		<number name="bush2Y" default="507" />
 	</values> 
 	<tilesets>
 		<tileset name="tileset" image="tileset.png" tileWidth="16" tileHeight="16"/>
 	</tilesets> 
 	<objects>
 		<object name="playerStart" image="playerStart.png" width="16" height="16" limit="1"/>
+		<object name="door" image="door.png" width="32" height="32" />
 		<object name="TP" image="TP.png" width="16" height="16">
 			<values>
 				<integer name="destination" min="1" max="500" default="1" />
@@ -25,11 +30,12 @@
 				<integer name="from" min="1" max="500" default="1" />
 			</values>
 		</object>
+		<object name="shop_panel" image="shop_panel.png" width="64" height="32" />
 	</objects> 
 	<layers>
 		<grid name="solids" gridSize="16" drawGridSize="32" exportAsObjects="true" />
-		<tiles name="tilesBg" gridSize="16" drawGridSize="32" exportTileSize="true" />
-		<objects name="objects" gridSize="16"/>
 		<tiles name="tilesAbove" gridSize="16" drawGridSize="32" exportTileSize="true" />
+		<tiles name="tilesAboveDeco" gridSize="16" drawGridSize="32" exportTileSize="true" />
+		<objects name="objects" gridSize="16"/>
 	</layers>
 </project>

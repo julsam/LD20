@@ -7,6 +7,7 @@ package
 	import net.flashpunk.FP;
 	import net.flashpunk.World;
 	import net.flashpunk.graphics.Backdrop;
+	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Tilemap;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
@@ -32,6 +33,7 @@ package
 			
 			Input.define("Left", Key.LEFT);
 			Input.define("Right", Key.RIGHT);
+			Input.define("Interact", Key.DOWN, Key.X);
 			Input.define("Jump", Key.SPACE, Key.UP);
 			
 			
@@ -42,6 +44,7 @@ package
 		override public function update():void 
 		{
 			super.update();
+			Global.skyMgr.update();
 						
 			if (Global.changeLevel) {
 				if (!Global.transition.playing)
@@ -73,16 +76,17 @@ package
 			FP.width = xml.width;
 			FP.height = xml.height;
 			
-			Global.skyMgr = new SkyManager(xml.@levelEnvironment);
+			var skyOptions:Object = new Object();
+			skyOptions["levelEnvironment"] = xml.@levelEnvironment;
+			skyOptions["cloudBottomY"] = xml.@cloudBottomY;
+			skyOptions["bush1Y"] = xml.@bush1Y;
+			skyOptions["bush2Y"] = xml.@bush2Y;
+			skyOptions["bgcolor"] = xml.@bgcolor;
+			Global.skyMgr = new SkyManager(skyOptions);
 			trace(xml.@levelEnvironment);
 			
 			add(new Entity(0, 0, tileset = new Tilemap(Assets.TILESET, FP.width, FP.height, Global.grid, Global.grid)));
-						
-			// Tiles BG
-			for each (o in xml.tilesAbove[0].tile) {
-				// 17 = number of column
-				tileset.setTile(o.@x / Global.grid, o.@y / Global.grid, (17 * (o.@ty/Global.grid)) + (o.@tx/Global.grid));
-			}
+			
 			
 			if(Global.firstLevel && str.search("<playerStart") > 0) {
 				// Player
@@ -91,17 +95,20 @@ package
 			else
 			{
 				for each (o in xml.objects[0].TP_Arrival) {
-					if (xml.objects[0].TP_Arrival.@from == Global.previousLevel)
+					trace(Global.previousLevel);
+					trace("\n");
+					trace(xml.objects[0].TP_Arrival.@from);
+					if (o.@from == Global.previousLevel)
 					{
 						// Player
-						add(Global.player = new Player(xml.objects[0].TP_Arrival.@x, xml.objects[0].TP_Arrival.@y));
+						add(Global.player = new Player(o.@x, o.@y));
 					}
 				}
 			}
 			
 			// Camera
 			add(Global.camera = new Camera(Global.player as Entity));
-			
+						
 			// Tiles Above
 			for each (o in xml.tilesAbove[0].tile) {
 				// 17 = number of column
@@ -113,9 +120,28 @@ package
 				add(new Solid(o.@x, o.@y, o.@w, o.@h));
 			}
 			
+			// Doors
+			for each (o in xml.objects[0].door) {
+				add(new Door(o.@x, o.@y)); 
+			}
+			
+			// Shop panel
+			for each (o in xml.objects[0].shop_panel) {				
+				add(new Entity( o.@x, o.@y, new Image(Assets.OBJ_SHOP_PANEL)));	
+			}
+								
 			// TPs
 			for each (o in xml.objects[0].TP) {
 				add(new TP(o.@x, o.@y, o.@destination)); 
+			}
+			
+			// Tiles Above
+			if (xml.tilesAboveDeco[0])
+			{
+				for each (o in xml.tilesAboveDeco[0].tile) {
+					// 17 = number of column
+					tileset.setTile(o.@x / Global.grid, o.@y / Global.grid, (17 * (o.@ty/Global.grid)) + (o.@tx/Global.grid));
+				}
 			}
 		}
 		
@@ -124,6 +150,7 @@ package
 			removeAll();
 			
 			Global.changeLevel = false;
+			trace("currentLevel (previous) : "+Global.currentLevel+"\n");
 			Global.previousLevel = Global.currentLevel;
 			
 			loadLevel(Global.levelToLoad);

@@ -7,25 +7,63 @@ package
 	import net.flashpunk.Graphic;
 	import net.flashpunk.World;
 	import net.flashpunk.graphics.Backdrop;
+	import net.flashpunk.graphics.Image;
 	
 	public class SkyManager
 	{
-		public var _type:String;
+		public var _opt:Object = new Object();
+		public var _cloudCount:uint = 0;
 		
-		public function SkyManager(type:String="village_outdoor") 
+		public function SkyManager(opt:Object=null) 
 		{
-			_type = type;
+			_opt["type"] = "village_outdoor";
+			_opt["cloudBottomY"] = 399;
+			_opt["bush1Y"] = 507;
+			_opt["bush2Y"] = 507;
+			_opt["bgcolor"] = 0xa0d0f0;
 			
-			var skyY:int = FP.height - FP.getBitmap(Assets.BUSH1).height - 93 - 15;
-			FP.world.add(new Parallax(0, skyY, 0, 0, new Backdrop(Assets.CLOUD3, true, false)));
-			FP.world.add(new Parallax(0, 450, 4, 1, new Backdrop(Assets.CLOUD4, false, false)));
-			FP.world.add(new Parallax(0, 0, 4, 0, new Backdrop(Assets.CLOUD5, true, false)));
+			if (opt != null)
+			{
+				for each(var o:String in opt)
+				{
+					if (o)
+					{
+						_opt[o] = opt[o];
+					}
+				}
+			}
 			
-			var bush2:Backdrop = new Backdrop(Assets.BUSH1, true, false);
-			bush2.alpha = 0.8;
-			FP.world.add(new Parallax(40, FP.height - FP.getBitmap(Assets.BUSH1).height, 3, 0, bush2));
+			if (_opt["type"] == "village_outdoor" || _opt["type"] == "dungeon_outdoor")
+			{
+				var skyY:int = FP.height - FP.getBitmap(Assets.BUSH1).height - 93 - 15;
+				FP.world.add(new Parallax(0, _opt["cloudBottomY"], 0, 0, new Backdrop(Assets.CLOUD3, true, false)));
+				
+				FP.world.add(new Parallax(0, 0, 4, 0, new Backdrop(Assets.CLOUD5, true, false)));
+				
+				
+				while (_cloudCount < 5)
+				{
+					FP.world.add(new Cloud(FP.rand(FP.width-30), FP.rand(FP.height-10)));
+					_cloudCount++;
+				}
+				
+				var bush2:Backdrop = new Backdrop(Assets.BUSH1, true, false);
+				bush2.alpha = 0.8;
+				FP.world.add(new Parallax(40, _opt["bush2Y"], 3, 0, bush2));
 			
-			FP.world.add(new Parallax(160, FP.height - FP.getBitmap(Assets.BUSH1).height, 2, 0, new Backdrop(Assets.BUSH1, true, false)));
+				FP.world.add(new Parallax(160, _opt["bush1Y"], 2, 0, new Backdrop(Assets.BUSH1, true, false)));
+			}
+			
+			FP.screen.color = _opt["bgcolor"];
+		}
+		
+		public function update():void
+		{
+			if (_cloudCount < 5)
+			{
+				FP.world.add(new Cloud(-FP.getBitmap(Assets.CLOUD4).width, FP.rand(FP.height-10)));
+				_cloudCount++;
+			}
 		}
 	}
 	

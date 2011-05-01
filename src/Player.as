@@ -23,7 +23,7 @@ package
 		
 		public function Player(x:Number, y:Number)
 		{	
-			layer = 1;
+			layer = -1;
 			
 			this.x = x;
 			this.y = y;

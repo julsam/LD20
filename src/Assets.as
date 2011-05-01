@@ -6,8 +6,10 @@ package
 		public static const LEVEL1:Class;
 		[Embed(source = '../assets/levels/2.oel',  mimeType = "application/octet-stream")] 
 		public static const LEVEL2:Class;
+		[Embed(source = '../assets/levels/3.oel',  mimeType = "application/octet-stream")] 
+		public static const LEVEL3:Class;
 		
-		public static const LEVELS:Array = new Array(LEVEL1, LEVEL2);
+		public static const LEVELS:Array = new Array(LEVEL1, LEVEL2, LEVEL3);
 		
 		//tilesets
 		[Embed(source = '../assets/sprites/tileset.png')] 
@@ -28,5 +30,11 @@ package
 		public static const CLOUD4:Class;
 		[Embed(source = '../assets/sprites/cloud5.png')] 
 		public static const CLOUD5:Class;
+		
+		// Objects
+		[Embed(source = '../assets/sprites/door.png')] 
+		public static const OBJ_DOOR:Class;
+		[Embed(source = '../assets/sprites/shop_panel.png')] 
+		public static const OBJ_SHOP_PANEL:Class;
 	}
 }
