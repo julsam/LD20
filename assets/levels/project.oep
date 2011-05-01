@@ -2,9 +2,11 @@
 	<name>project</name>
 	<settings>
 		<defaultWidth>400</defaultWidth>
-		<defaultHeight>300</defaultHeight>
+		<defaultHeight>332</defaultHeight>
 		<maxWidth>4096</maxWidth>
 		<maxHeight>2048</maxHeight>
+		<minWidth>400</minWidth>
+		<minHeight>300</minHeight>
 		<workingDirectory>../sprites</workingDirectory>
 	</settings>
 	<values>
@@ -35,6 +37,28 @@
 			</values>
 		</object>
 		<object name="shop_panel" image="shop_panel.png" width="64" height="32" />
+		<object name="spaceship" image="spaceship.png" width="238" height="304" />
+		<object name="treasure" image="treasure.png" width="16" height="16" />
+		
+		<object name="flyingMob" image="mob1.png" width="16" height="16">
+			<values>
+				<number name="speed" min="1" max="500" default="20" />
+			</values>
+			<nodes drawObject="true" limit="3" lineMode="2"/>
+		</object>
+		
+		<object name="snake" image="mob2.png" width="16" height="16">
+			<values>
+				<number name="speed" min="1" max="500" default="20" />
+			</values>
+			<nodes drawObject="true" limit="3" lineMode="2"/>
+		</object>
+		
+		<object name="CP" image="CP.png" width="16" height="16">
+			<values>
+				<number name="id" min="1" max="1000" default="1.0" />
+			</values>
+		</object>
 	</objects> 
 	<layers>
 		<grid name="solids" gridSize="16" drawGridSize="32" exportAsObjects="true" />

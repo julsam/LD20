@@ -36,6 +36,7 @@ package
 			
 			if (_opt["levelEnvironment"] == "village_outdoor" || _opt["levelEnvironment"] == "dungeon_outdoor")
 			{
+				trace("DISPLAY_CLOUDS");
 				var skyY:int = FP.height - FP.getBitmap(Assets.BUSH1).height - 93 - 15;
 				FP.world.add(new Parallax(0, _opt["cloudBottomY"], 0, 0, new Backdrop(Assets.CLOUD3, true, false)));
 				

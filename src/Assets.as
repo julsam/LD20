@@ -1,5 +1,7 @@
 package  
 {
+	import flash.utils.Dictionary;
+	
 	public class Assets
 	{
 		[Embed(source = '../assets/levels/1.oel',  mimeType = "application/octet-stream")] 
@@ -8,8 +10,14 @@ package
 		public static const LEVEL2:Class;
 		[Embed(source = '../assets/levels/3.oel',  mimeType = "application/octet-stream")] 
 		public static const LEVEL3:Class;
+		[Embed(source = '../assets/levels/4.oel',  mimeType = "application/octet-stream")] 
+		public static const LEVEL4:Class;
 		
-		public static const LEVELS:Array = new Array(LEVEL1, LEVEL2, LEVEL3);
+		public static const LEVELS:Dictionary = new Dictionary();
+		LEVELS[1] = LEVEL1;
+		LEVELS[2] = LEVEL2;
+		LEVELS[3] = LEVEL3;
+		LEVELS[4] = LEVEL4;
 		
 		//tilesets
 		[Embed(source = '../assets/sprites/tileset.png')] 
@@ -36,5 +44,18 @@ package
 		public static const OBJ_DOOR:Class;
 		[Embed(source = '../assets/sprites/shop_panel.png')] 
 		public static const OBJ_SHOP_PANEL:Class;
+		[Embed(source = '../assets/sprites/spaceship.png')] 
+		public static const OBJ_SPACESHIP:Class;
+		
+		
+		// NPC - Monsters
+		[Embed(source = '../assets/sprites/grandpa.png')] 
+		public static const GRANDPA:Class;
+		[Embed(source = '../assets/sprites/oldman.png')] 
+		public static const OLDMAN:Class;
+		[Embed(source = '../assets/sprites/mob1.png')] 
+		public static const MOB1:Class;
+		[Embed(source = '../assets/sprites/mob2.png')] 
+		public static const MOB2:Class;
 	}
 }

@@ -5,12 +5,16 @@ package
 		public static var
 			time:int = 0,
 			deaths:int = 0,
+			restartLevel:Boolean = false,
 			
 			firstLevel:Boolean = true,
 			changeLevel:Boolean = false,
-			previousLevel:int = 1,
-			currentLevel:int = 1,
+			previousLevel:int,
+			currentLevel:int,
 			levelToLoad:int,
+			
+			
+			checkpointID:Number, // checkpoint
 			
 			player:Player,
 			camera:Camera,

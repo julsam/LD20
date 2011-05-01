@@ -1,5 +1,6 @@
 package
 {	
+	import flash.geom.Point;
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
 	
@@ -24,7 +25,7 @@ package
 			
 			Global.transition = new Transition();
 			
-			Global.skyMgr = new SkyManager();
+			//Global.skyMgr = new SkyManager();
 	
 			
 			Input.define("Left", Key.LEFT);
@@ -32,8 +33,10 @@ package
 			Input.define("Interact", Key.DOWN, Key.X);
 			Input.define("Jump", Key.SPACE, Key.UP);
 			
+			Global.previousLevel = 1;
+			Global.currentLevel = 1;
+			loadLevel(1);
 			
-			loadLevel();
 			Global.firstLevel = false;
 		}
 		
@@ -42,7 +45,7 @@ package
 			super.update();
 			Global.skyMgr.update();
 						
-			if (Global.changeLevel) {
+			if (Global.changeLevel || Global.restartLevel) {
 				if (!Global.transition.playing)
 				{
 					add(Global.transition);
@@ -53,14 +56,19 @@ package
 				if (Global.transition.done)
 				{
 					Global.transition.reset();
-					nextLevel();
+					
+					// change to an other level
+					if (Global.changeLevel)
+						nextLevel();
+					else if (Global.restartLevel) // restart current level (death)
+						restartLevel();
 				}
 			}
 		}
 		
 		public function loadLevel(lid:int=1):void 
 		{
-			var file:ByteArray = new Assets.LEVELS[lid - 1];
+			var file:ByteArray = new Assets.LEVELS[lid];
 			var str:String = file.readUTFBytes( file.length );
 			var xml:XML = new XML(str);
 			
@@ -92,6 +100,16 @@ package
 			if(Global.firstLevel && str.search("<playerStart") > 0) {
 				// Player
 				add(Global.player = new Player(xml.objects[0].playerStart.@x, xml.objects[0].playerStart.@y));
+			}
+			else if(Global.restartLevel)
+			{
+				for each (o in xml.objects[0].CP) {
+					if (o.@id == Global.checkpointID)
+					{
+						// Player
+						add(Global.player = new Player(o.@x, o.@y));
+					}
+				}
 			}
 			else
 			{
@@ -127,6 +145,11 @@ package
 			for each (o in xml.objects[0].shop_panel) {				
 				add(new Entity( o.@x, o.@y, new Image(Assets.OBJ_SHOP_PANEL)));	
 			}
+			
+			// Spaceship
+			for each (o in xml.objects[0].spaceship) {				
+				add(new Entity( o.@x, o.@y, new Image(Assets.OBJ_SPACESHIP)));	
+			}
 								
 			// TPs
 			for each (o in xml.objects[0].TP) {
@@ -141,6 +164,37 @@ package
 					tileset.setTile(o.@x / Global.grid, o.@y / Global.grid, (17 * (o.@ty/Global.grid)) + (o.@tx/Global.grid));
 				}
 			}
+			
+			
+			// array for nodes
+			var a:Array = new Array();
+			
+			// Snake
+			for each (o in xml.objects[0].snake) {
+				a = new Array();
+				for each (n in o.node)
+				{
+					a.push(new Point(n.@x, n.@y));
+				}
+				var snake:Snake = new Snake(o.@x, o.@y, a, o.@speed);
+				add(snake);
+			}
+			
+			// FlyingMob
+			for each (o in xml.objects[0].flyingMob) {
+				a = new Array();
+				for each (n in o.node)
+				{
+					a.push(new Point(n.@x, n.@y));
+				}
+				var flyingMob:FlyingMob = new FlyingMob(o.@x, o.@y, a, o.@speed);
+				add(flyingMob);
+			}
+			
+			
+			for each (o in xml.objects[0].CP) {
+				add(new CheckPoint(o.@x, o.@y, o.@id));
+			}
 		}
 		
 		public function nextLevel():void
@@ -154,6 +208,15 @@ package
 			loadLevel(Global.levelToLoad);
 			
 			Global.currentLevel = Global.levelToLoad;
+		}
+		
+		public function restartLevel():void
+		{
+			removeAll();
+			loadLevel(Math.floor(Global.checkpointID));
+			
+			Global.restartLevel = false;
+			Global.deaths++;
 		}
 	}
 	

@@ -14,6 +14,8 @@ package
 	
 	public class Player extends PhysicsEntity
 	{		
+		public var dead:Boolean = false;
+		
 		public var doubleJump:Boolean = false;
 		
 		public var cling:int = 0;
@@ -159,6 +161,12 @@ package
 			
 			x = position.x;
 			y = position.y;
-		}		
+		}
+		
+		public function kill():void
+		{
+			dead = true;
+			Global.restartLevel = true;
+		}
 	}
 }
