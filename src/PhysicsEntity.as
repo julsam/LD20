@@ -23,10 +23,10 @@ package
 				
 		public const FRICTION_GROUND:int = 800;
 		public const FRICTION_AIR:int = 400;
-		public const MAXSPEED_GROUND:Point = new Point(60.0, 60.0);
+		public const MAXSPEED_GROUND:Point = new Point(80.0, 80.0);
 		public const MAXSPEED_AIR:Point = new Point(80.0, 80.0);
-		public var GRAVITY:int = 300;
-		public const JUMP:Number = 125.0;
+		public var GRAVITY:int = 280;
+		public const JUMP:Number = 145.0;
 		public const WALLJUMP:Number = 160.0;
 		public const ACCELERATION:Point = new Point(800, 800);
 		

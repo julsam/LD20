@@ -25,13 +25,18 @@ package
 			doubleJump:Boolean,
 			fire:Boolean,
 			firePower:Boolean,
+			fireSpeed:Boolean,
 			climb:Boolean,
-			lighter:Boolean;
+			lighter:Boolean,
+			moveSpeed:Boolean;
 		
 		public static const grid:int = 16;
 		
 		public static const windowWidth:int = 800;
 		public static const windowHeight:int = 600;
+		
+		
+		public static const maxItems:int = 8;
 	}
 	
 }

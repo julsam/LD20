@@ -2,19 +2,20 @@
 	<name>project</name>
 	<settings>
 		<defaultWidth>400</defaultWidth>
-		<defaultHeight>332</defaultHeight>
+		<defaultHeight>336</defaultHeight>
 		<maxWidth>4096</maxWidth>
 		<maxHeight>2048</maxHeight>
 		<minWidth>400</minWidth>
-		<minHeight>300</minHeight>
+		<minHeight>304</minHeight>
 		<workingDirectory>../sprites</workingDirectory>
 	</settings>
 	<values>
 		<string name="levelEnvironment" default="dungeon_outdoor" maxChars="50" />
 		<string name="bgcolor" default="0xa0d0f0" maxChars="8" />
-		<number name="cloudBottomY" default="399" />
-		<number name="bush1Y" default="507" />
-		<number name="bush2Y" default="507" />
+		<number name="cloudTopY" default="0" />
+		<number name="cloudBottomY" default="164" />
+		<number name="bush1Y" default="211" />
+		<number name="bush2Y" default="211" />
 	</values> 
 	<tilesets>
 		<tileset name="tileset" image="tileset.png" tileWidth="16" tileHeight="16"/>
@@ -38,7 +39,11 @@
 		</object>
 		<object name="shop_panel" image="shop_panel.png" width="64" height="32" />
 		<object name="spaceship" image="spaceship.png" width="238" height="304" />
-		<object name="treasure" image="treasure.png" width="16" height="16" />
+		<object name="treasure" image="treasure.png" width="16" height="16">
+			<values>
+				<string name="content" maxChars="8" default="jump" />
+			</values>
+		</object>
 		
 		<object name="flyingMob" image="mob1.png" width="16" height="16">
 			<values>

@@ -49,6 +49,9 @@ package
 		
 		override public function update():void
 		{
+			if (Global.transition.playing) // stop moving when screen's fading (level change)
+				return;
+			
 			position.x = x;
 			position.y = y;
 			

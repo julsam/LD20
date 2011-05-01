@@ -33,9 +33,9 @@ package
 			Input.define("Interact", Key.DOWN, Key.X);
 			Input.define("Jump", Key.SPACE, Key.UP);
 			
-			Global.previousLevel = 1;
-			Global.currentLevel = 1;
-			loadLevel(1);
+			Global.previousLevel = 13;
+			Global.currentLevel = 13;
+			loadLevel(13);
 			
 			Global.firstLevel = false;
 		}
@@ -82,6 +82,7 @@ package
 			
 			var skyOptions:Dictionary = new Dictionary();
 			skyOptions["levelEnvironment"] = xml.@levelEnvironment;
+			skyOptions["cloudTopY"] = xml.@cloudTopY;
 			skyOptions["cloudBottomY"] = xml.@cloudBottomY;
 			skyOptions["bush1Y"] = xml.@bush1Y;
 			skyOptions["bush2Y"] = xml.@bush2Y;
@@ -192,8 +193,14 @@ package
 			}
 			
 			
+			// CheckPoints
 			for each (o in xml.objects[0].CP) {
 				add(new CheckPoint(o.@x, o.@y, o.@id));
+			}
+			
+			// Chest
+			for each (o in xml.objects[0].treasure) {
+				add(new Chest(o.@x, o.@y, o.@content));
 			}
 		}
 		

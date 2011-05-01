@@ -18,6 +18,7 @@ package
 		public function SkyManager(opt:Dictionary=null) 
 		{
 			_opt["levelEnvironment"] = "village_outdoor";
+			_opt["cloudTopY"] = 0;
 			_opt["cloudBottomY"] = 399;
 			_opt["bush1Y"] = 507;
 			_opt["bush2Y"] = 507;
@@ -40,12 +41,12 @@ package
 				var skyY:int = FP.height - FP.getBitmap(Assets.BUSH1).height - 93 - 15;
 				FP.world.add(new Parallax(0, _opt["cloudBottomY"], 0, 0, new Backdrop(Assets.CLOUD3, true, false)));
 				
-				FP.world.add(new Parallax(0, 0, 4, 0, new Backdrop(Assets.CLOUD5, true, false)));
+				FP.world.add(new Parallax(0, _opt["cloudTopY"], 4, 0, new Backdrop(Assets.CLOUD5, true, false)));
 				
 				
 				while (_cloudCount < 5)
 				{
-					FP.world.add(new Cloud(FP.rand(FP.width-30), FP.rand(FP.height-10), FP.clamp(FP.rand(28), 18, FP.rand(28))));
+					FP.world.add(new Cloud(FP.rand(FP.width-30), FP.rand(FP.height-109), FP.clamp(FP.rand(28), 18, FP.rand(28))));
 					_cloudCount++;
 				}
 				
