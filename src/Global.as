@@ -1,5 +1,7 @@
 package  
 {
+	import flash.utils.Dictionary;
+
 	public class Global
 	{		
 		public static var
@@ -19,16 +21,18 @@ package
 			player:Player,
 			camera:Camera,
 			transition:Transition,
-			skyMgr:SkyManager,
+			skyMgr:SkyManager;
+						
 			
-			jump:Boolean,
-			doubleJump:Boolean,
-			fire:Boolean,
-			firePower:Boolean,
-			fireSpeed:Boolean,
-			climb:Boolean,
-			lighter:Boolean,
-			moveSpeed:Boolean;
+		public static var abilities:Dictionary = new Dictionary();
+		abilities["jump"] = false;
+		abilities["doubleJump"] = false;
+		abilities["laserGun"] = false;
+		abilities["firePower"] = false;
+		abilities["fireSpeed"] = false;
+		abilities["wallJump"] = false;
+		abilities["lighter"] = false;
+		abilities["moveSpeed"] = false;
 		
 		public static const grid:int = 16;
 		
@@ -36,7 +40,8 @@ package
 		public static const windowHeight:int = 600;
 		
 		
-		public static const maxItems:int = 8;
+		public static var abilitiesCount:int = 0;
+		public static const maxItems:int = 5;		// important it ends the game
 	}
 	
 }

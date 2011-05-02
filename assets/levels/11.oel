@@ -1,4 +1,4 @@
-<level levelEnvironment="village_indoor" bgcolor="0x000000" cloudBottomY="399" bush1Y="507" bush2Y="507">
+<level levelEnvironment="village_indoor" bgcolor="0x000000" cloudTopY="0" cloudBottomY="399" bush1Y="507" bush2Y="507">
   <width>400</width>
   <height>336</height>
   <solids>
@@ -540,6 +540,7 @@
     <tile tx="240" ty="32" x="176" y="240"/>
     <tile tx="256" ty="32" x="192" y="240"/>
     <tile tx="64" ty="96" x="176" y="288"/>
+    <tile tx="96" ty="96" x="208" y="288"/>
   </tilesAboveDeco>
   <objects>
     <door x="64" y="272" destination="12"/>
@@ -547,5 +548,6 @@
     <TP_Arrival x="80" y="272" from="12"/>
     <TP_Arrival x="304" y="272" from="10"/>
     <playerStart x="144" y="272"/>
+    <grandpa x="192" y="288"/>
   </objects>
 </level>

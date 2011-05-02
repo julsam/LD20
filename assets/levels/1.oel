@@ -1,4 +1,4 @@
-<level levelEnvironment="village_outdoor" bgcolor="0xa0d0f0" cloudBottomY="399" bush1Y="507" bush2Y="507">
+<level levelEnvironment="village_outdoor" bgcolor="0xa0d0f0" cloudTopY="0" cloudBottomY="399" bush1Y="507" bush2Y="507">
   <width>800</width>
   <height>600</height>
   <solids>
@@ -251,7 +251,6 @@
     <tile tx="32" ty="96" x="192" y="496"/>
   </tilesAboveDeco>
   <objects>
-    <playerStart x="176" y="496"/>
     <TP x="16" y="448" destination="2"/>
     <TP x="544" y="480" destination="2"/>
     <TP x="544" y="496" destination="2"/>
@@ -268,5 +267,13 @@
       <node x="144" y="432"/>
     </flyingMob>
     <CP x="192" y="480" id="1"/>
+    <spikes1 x="208" y="528"/>
+    <spikes4 x="192" y="560"/>
+    <spikes3 x="304" y="496"/>
+    <canon3 x="272" y="464" bulletTimer="2" bulletSpeed="100"/>
+    <canon4 x="240" y="400" bulletTimer="2" bulletSpeed="100"/>
+    <canon2 x="176" y="512" bulletTimer="2" bulletSpeed="100"/>
+    <canon1 x="224" y="400" bulletTimer="2" bulletSpeed="100"/>
+    <playerStart x="192" y="464"/>
   </objects>
 </level>

@@ -32,10 +32,12 @@ package
 			Input.define("Right", Key.RIGHT);
 			Input.define("Interact", Key.DOWN, Key.X);
 			Input.define("Jump", Key.SPACE, Key.UP);
+			Input.define("Fire", Key.C, Key.Z);
 			
-			Global.previousLevel = 13;
-			Global.currentLevel = 13;
-			loadLevel(13);
+			var level:int = 10;
+			Global.previousLevel = level;
+			Global.currentLevel = level;
+			loadLevel(level);
 			
 			Global.firstLevel = false;
 		}
@@ -64,6 +66,12 @@ package
 						restartLevel();
 				}
 			}
+			
+			if (Global.abilitiesCount >= Global.maxItems)
+			{
+				FP.world = new EndWorld();
+				trace("Game Over !");
+			}
 		}
 		
 		public function loadLevel(lid:int=1):void 
@@ -88,10 +96,12 @@ package
 			skyOptions["bush2Y"] = xml.@bush2Y;
 			skyOptions["bgcolor"] = xml.@bgcolor;
 			
+			/*
 			for(var s:String in skyOptions)
 			{
 				trace(skyOptions[s]);
 			}
+			*/
 			
 			Global.skyMgr = new SkyManager(skyOptions);
 			
@@ -137,9 +147,34 @@ package
 				add(new Solid(o.@x, o.@y, o.@w, o.@h));
 			}
 			
+			// Spikes
+			for each (o in xml.objects[0].spikes1) { add(new Spikes(o.@x, o.@y, Assets.OBJ_SPIKES1)); }
+			for each (o in xml.objects[0].spikes2) { add(new Spikes(o.@x, o.@y, Assets.OBJ_SPIKES2)); }
+			for each (o in xml.objects[0].spikes3) { add(new Spikes(o.@x, o.@y, Assets.OBJ_SPIKES3)); }
+			for each (o in xml.objects[0].spikes4) { add(new Spikes(o.@x, o.@y, Assets.OBJ_SPIKES4)); }
+			
+			// Canons
+			for each (o in xml.objects[0].canon1) { 
+				add(new Canon(o.@x, o.@y, Assets.OBJ_CANON1, 2, o.@bulletTimer, o.@bulletSpeed)); 
+			}
+			for each (o in xml.objects[0].canon2) { 
+				add(new Canon(o.@x, o.@y, Assets.OBJ_CANON2, 3, o.@bulletTimer, o.@bulletSpeed)); 
+			}
+			for each (o in xml.objects[0].canon3) { 
+				add(new Canon(o.@x, o.@y, Assets.OBJ_CANON3, 0, o.@bulletTimer, o.@bulletSpeed)); 
+			}
+			for each (o in xml.objects[0].canon4) { 
+				add(new Canon(o.@x, o.@y, Assets.OBJ_CANON4, 1, o.@bulletTimer, o.@bulletSpeed)); 
+			}
+			
 			// Doors
 			for each (o in xml.objects[0].door) {
 				add(new Door(o.@x, o.@y, o.@destination)); 
+			}
+			
+			// Grandpa
+			for each (o in xml.objects[0].grandpa) {
+				add(new Grandpa(o.@x, o.@y)); 
 			}
 			
 			// Shop panel

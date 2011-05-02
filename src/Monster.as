@@ -12,6 +12,8 @@ package
 	
 	public class Monster extends Entity
 	{		
+		public var _life:int = 3;
+		
 		public var speed:Point = new Point(0, 0);	
 		
 		public var direction:int = 1; // right : 1, left : -1
@@ -82,11 +84,8 @@ package
 						
 			direction = x > previousX ? 1 : - 1;
 			
-			if(collide("Solid", x, y) && !Global.player.dead)
-			{
-				if(this) FP.world.remove(this);
-			}
-			else if(collideWith(Global.player, x, y))
+			
+			if(collideWith(Global.player, x, y))
 			{
 				// set the bullet to invisible (and not remove(this) because of an awkward bug)
 				visible = false;

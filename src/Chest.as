@@ -1,7 +1,9 @@
 package
 {
 	import net.flashpunk.Entity;
+	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Text;
 	import net.flashpunk.utils.Input;
 	
 	public class Chest extends Entity
@@ -22,10 +24,16 @@ package
 		override public function update():void
 		{
 			if (collideWith(Global.player, x, y)) 
-			{				
-				if (Input.pressed("Interact"))
+			{
+				if (Input.pressed("Interact") && !Global.abilities[_content])
 				{
-					trace("chest !");
+					Global.abilities[_content] = true;
+										
+					var dial:Dialog = new Dialog("", Global.player.x - 50,  Global.player.y - 50, false);
+					dial.text = "new ability : \n"+_content;
+					this.world.add(dial);
+					
+					Global.abilitiesCount++;
 				}
 			}
 		}		

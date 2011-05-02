@@ -22,6 +22,39 @@
 	</tilesets> 
 	<objects>
 		<object name="playerStart" image="playerStart.png" width="16" height="16" limit="1"/>
+		
+		<object name="spikes1" image="spikes1.png" width="16" height="16" />
+		<object name="spikes2" image="spikes2.png" width="16" height="16" />
+		<object name="spikes3" image="spikes3.png" width="16" height="16" />
+		<object name="spikes4" image="spikes4.png" width="16" height="16" />
+		
+		
+		<object name="canon1" image="canon1.png" width="16" height="16">
+			<values>
+				<number name="bulletTimer" min="0.1" max="10.0" default="2.0" />
+				<integer name="bulletSpeed" min="1" max="500" default="100" />
+			</values>
+		</object>
+		<object name="canon2" image="canon2.png" width="16" height="16">
+			<values>
+				<number name="bulletTimer" min="0.1" max="10.0" default="2.0" />
+				<integer name="bulletSpeed" min="1" max="500" default="100" />
+			</values>
+		</object>
+		<object name="canon3" image="canon3.png" width="16" height="16">
+			<values>
+				<number name="bulletTimer" min="0.1" max="10.0" default="2.0" />
+				<integer name="bulletSpeed" min="1" max="500" default="100" />
+			</values>
+		</object>
+		<object name="canon4" image="canon4.png" width="16" height="16">
+			<values>
+				<number name="bulletTimer" min="0.1" max="10.0" default="2.0" />
+				<integer name="bulletSpeed" min="1" max="500" default="100" />
+			</values>
+		</object>
+		
+		
 		<object name="door" image="door.png" width="32" height="32">
 			<values>
 				<integer name="destination" min="1" max="500" default="1" />
@@ -29,12 +62,12 @@
 		</object>
 		<object name="TP" image="TP.png" width="16" height="16">
 			<values>
-				<integer name="destination" min="1" max="500" default="1" />
+				<number name="destination" min="1" max="500" default="1" />
 			</values>
 		</object>
 		<object name="TP_Arrival" image="TP_Arrival.png" width="16" height="16">
 			<values>
-				<integer name="from" min="1" max="500" default="1" />
+				<number name="from" min="1" max="500" default="1" />
 			</values>
 		</object>
 		<object name="shop_panel" image="shop_panel.png" width="64" height="32" />
@@ -64,6 +97,10 @@
 				<number name="id" min="1" max="1000" default="1.0" />
 			</values>
 		</object>
+		
+		
+		<object name="grandpa" image="grandpa.png" width="16" height="16" />
+		<object name="oldman" image="oldman.png" width="16" height="16" />
 	</objects> 
 	<layers>
 		<grid name="solids" gridSize="16" drawGridSize="32" exportAsObjects="true" />

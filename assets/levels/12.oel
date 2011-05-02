@@ -2,7 +2,7 @@
   <width>1024</width>
   <height>336</height>
   <solids>
-    <rect x="0" y="304" w="1024" h="16"/>
+    <rect x="0" y="304" w="864" h="16"/>
     <rect x="224" y="240" w="160" h="16"/>
     <rect x="272" y="208" w="64" h="32"/>
     <rect x="512" y="240" w="48" h="16"/>
@@ -10,6 +10,7 @@
     <rect x="608" y="160" w="64" h="16"/>
     <rect x="672" y="208" w="48" h="16"/>
     <rect x="720" y="240" w="48" h="16"/>
+    <rect x="864" y="288" w="160" h="16"/>
   </solids>
   <tilesAbove set="tileset" tileWidth="16" tileHeight="16">
     <tile tx="16" ty="32" x="32" y="304"/>
@@ -126,16 +127,6 @@
     <tile tx="16" ty="48" x="560" y="320"/>
     <tile tx="16" ty="48" x="576" y="320"/>
     <tile tx="0" ty="48" x="0" y="320"/>
-    <tile tx="32" ty="32" x="1008" y="304"/>
-    <tile tx="16" ty="32" x="992" y="304"/>
-    <tile tx="16" ty="32" x="976" y="304"/>
-    <tile tx="16" ty="32" x="960" y="304"/>
-    <tile tx="16" ty="32" x="944" y="304"/>
-    <tile tx="16" ty="32" x="928" y="304"/>
-    <tile tx="16" ty="32" x="912" y="304"/>
-    <tile tx="16" ty="32" x="896" y="304"/>
-    <tile tx="16" ty="32" x="880" y="304"/>
-    <tile tx="16" ty="32" x="864" y="304"/>
     <tile tx="16" ty="32" x="848" y="304"/>
     <tile tx="16" ty="32" x="832" y="304"/>
     <tile tx="16" ty="32" x="816" y="304"/>
@@ -296,6 +287,27 @@
     <tile tx="48" ty="80" x="144" y="272"/>
     <tile tx="32" ty="80" x="128" y="272"/>
     <tile tx="32" ty="96" x="128" y="288"/>
+    <tile tx="0" ty="32" x="864" y="288"/>
+    <tile tx="0" ty="48" x="864" y="304"/>
+    <tile tx="16" ty="48" x="880" y="304"/>
+    <tile tx="16" ty="48" x="896" y="304"/>
+    <tile tx="16" ty="48" x="912" y="304"/>
+    <tile tx="16" ty="48" x="928" y="304"/>
+    <tile tx="16" ty="48" x="944" y="304"/>
+    <tile tx="16" ty="48" x="960" y="304"/>
+    <tile tx="16" ty="48" x="976" y="304"/>
+    <tile tx="16" ty="48" x="992" y="304"/>
+    <tile tx="16" ty="48" x="1008" y="304"/>
+    <tile tx="16" ty="48" x="1024" y="304"/>
+    <tile tx="16" ty="32" x="880" y="288"/>
+    <tile tx="16" ty="32" x="896" y="288"/>
+    <tile tx="16" ty="32" x="912" y="288"/>
+    <tile tx="16" ty="32" x="928" y="288"/>
+    <tile tx="16" ty="32" x="944" y="288"/>
+    <tile tx="16" ty="32" x="960" y="288"/>
+    <tile tx="16" ty="32" x="976" y="288"/>
+    <tile tx="16" ty="32" x="992" y="288"/>
+    <tile tx="16" ty="32" x="1008" y="288"/>
   </tilesAbove>
   <tilesAboveDeco set="tileset" tileWidth="16" tileHeight="16">
     <tile tx="208" ty="64" x="272" y="288"/>
@@ -350,16 +362,44 @@
     <tile tx="80" ty="96" x="720" y="224"/>
     <tile tx="80" ty="96" x="736" y="224"/>
     <tile tx="80" ty="96" x="752" y="224"/>
+    <tile tx="80" ty="80" x="624" y="256"/>
+    <tile tx="96" ty="80" x="640" y="256"/>
   </tilesAboveDeco>
   <objects>
-    <door x="288" y="272" destination="11"/>
+    <door x="288" y="272" destination="14"/>
     <shop_panel x="272" y="208"/>
     <TP_Arrival x="304" y="272" from="11"/>
-    <playerStart x="272" y="272"/>
-    <door x="624" y="272" destination="1"/>
+    <door x="624" y="272" destination="14"/>
     <CP x="128" y="272" id="1"/>
     <TP x="0" y="272" destination="13"/>
     <TP x="0" y="288" destination="13"/>
     <TP_Arrival x="16" y="272" from="13"/>
+    <TP x="0" y="240" destination="13"/>
+    <TP x="0" y="256" destination="13"/>
+    <TP x="0" y="224" destination="13"/>
+    <TP x="0" y="208" destination="13"/>
+    <TP x="0" y="192" destination="1"/>
+    <TP x="0" y="176" destination="13"/>
+    <TP x="0" y="160" destination="13"/>
+    <TP x="0" y="144" destination="13"/>
+    <TP x="0" y="128" destination="13"/>
+    <TP x="0" y="112" destination="13"/>
+    <TP x="16" y="96" destination="13"/>
+    <TP_Arrival x="640" y="272" from="14"/>
+    <TP x="1008" y="272" destination="15"/>
+    <TP x="1008" y="256" destination="15"/>
+    <TP x="1008" y="240" destination="15"/>
+    <TP x="1008" y="224" destination="15"/>
+    <TP x="1008" y="208" destination="15"/>
+    <TP x="1008" y="192" destination="15"/>
+    <TP x="1008" y="176" destination="15"/>
+    <TP x="1008" y="160" destination="15"/>
+    <TP x="1008" y="144" destination="15"/>
+    <TP x="1008" y="128" destination="15"/>
+    <TP x="1008" y="112" destination="15"/>
+    <TP x="1008" y="96" destination="15"/>
+    <TP x="1008" y="80" destination="15"/>
+    <TP_Arrival x="992" y="256" from="15"/>
+    <playerStart x="960" y="256"/>
   </objects>
 </level>

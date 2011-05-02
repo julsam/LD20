@@ -16,6 +16,8 @@ package
 	{		
 		public var dead:Boolean = false;
 		
+		public var canMove:Boolean = true;
+		
 		public var doubleJump:Boolean = false;
 		
 		public var cling:int = 0;
@@ -31,7 +33,7 @@ package
 			this.y = y;
 			position = new Point(x, y);
 			
-			setHitbox(7, 16, -4, 0);			
+			setHitbox(7, 15, -4, -1);			
 			type = "Player";
 			
 			sprite.add("standRight", [0], 0, false);
@@ -49,18 +51,29 @@ package
 		
 		override public function update():void
 		{
-			if (Global.transition.playing) // stop moving when screen's fading (level change)
+			if (Global.transition.playing || !canMove) // stop moving when screen's fading (level change)
 				return;
 			
 			position.x = x;
 			position.y = y;
 			
+			if (Input.pressed("Fire") && Global.abilities["laserGun"])
+			{
+				FP.world.add(new LaserBeam(x + width/2, y + height/2, direction, 150));
+			}
 			
 			if (Input.check(Key.LEFT))
 			{
 				if (cling < 0)
 				{
 					velocity.x -= ACCELERATION.x * FP.elapsed;
+				}
+				else // stick to wall
+				{
+					/*
+					if (velocity.y > 0)
+						velocity.y = 0;
+					*/
 				}
 				sprite.play("runLeft");
 				direction = -1;
@@ -70,6 +83,13 @@ package
 				if (cling < 0)
 				{
 					velocity.x += ACCELERATION.x * FP.elapsed;
+				}
+				else // stick to wall
+				{
+					/*
+					if (velocity.y > 0)
+					velocity.y = 0;
+					*/
 				}
 				sprite.play("runRight");
 				direction = 1;
@@ -92,21 +112,32 @@ package
 				}
 			}
 			
-			if (Input.pressed("Jump") && (onGround || cling > 0 || !doubleJump))
+			if (Input.pressed("Jump") && (onGround || cling > 0 || !doubleJump) && Global.abilities["jump"])
 			{
-				// jump
-				velocity.y = -JUMP;
+				if (onGround)
+				{
+					// jump
+					velocity.y = -JUMP;
+				}
+				else
+				{
+					if (cling > 0 && Global.abilities["wallJump"])
+						velocity.y = -JUMP;						
+					else if (cling < 0 && Global.abilities["doubleJump"])
+						velocity.y = -JUMP;
+				}
 				
 				if (!onGround)
 				{
 					// wall jump
-					if (cling > 0)
+					if (cling > 0 && Global.abilities["wallJump"])
 					{
 						velocity.x = clingDir * WALLJUMP;
+						velocity.y -= ACCELERATION.y * FP.elapsed;
 						cling = -1;
 					}				
 						// double jump
-					else if (cling < 0) 
+					else if (cling < 0 && Global.abilities["doubleJump"]) 
 					{
 						doubleJump = true;
 					}
@@ -144,13 +175,13 @@ package
 				}
 				
 				// check for wall jump
-				if (collide("Solid", position.x + 1, position.y) && Input.check(Key.RIGHT))
+				if (collide("Solid", position.x + 1, position.y) && Input.check(Key.RIGHT) && Global.abilities["wallJump"])
 				{
 					velocity.x = 0; // avoid strange behaviour that happen after a few jump /!\ testing it, maybe not the right solution
 					cling = 10;
 					clingDir = -1;
 				}
-				if (collide("Solid", position.x - 1, position.y) && Input.check(Key.LEFT))
+				if (collide("Solid", position.x - 1, position.y) && Input.check(Key.LEFT) && Global.abilities["wallJump"])
 				{
 					velocity.x = 0; // avoid strange behaviour that happen after a few jump /!\ testing it, maybe not the right solution
 					cling = 10;
