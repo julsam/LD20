@@ -46,7 +46,6 @@ package
 			}
 			else if(m != null)
 			{
-				trace(m._life);
 				if (m._life > 1)
 				{
 					m._life--;

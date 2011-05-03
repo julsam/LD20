@@ -21,7 +21,6 @@ package
 			
 			if (text != "")
 			{
-				trace("dfd");
 				var textOptions:Object = new Object();
 				textOptions["size"] = 32;
 				textOptions["wordWrap"] = true;

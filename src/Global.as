@@ -41,7 +41,10 @@ package
 		
 		
 		public static var abilitiesCount:int = 0;
-		public static const maxItems:int = 5;		// important it ends the game
+		
+		// number of chests to open in order to complete the game
+		public static const maxItems:int = 5;
+		
 	}
 	
 }

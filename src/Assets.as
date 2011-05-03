@@ -139,8 +139,8 @@ package
 		[Embed(source = '../assets/sprites/mob2.png')] 
 		public static const MOB2:Class;
 		
-		[Embed(source = '../assets/sprites/textPanel.png')] 
-		public static const TEXT_PANEL:Class;
+		//[Embed(source = '../assets/sprites/textPanel.png')] 
+		//public static const TEXT_PANEL:Class;
 		
 		[Embed(source = '../assets/sprites/grandpaTalk.png')] 
 		public static const GRANDPA_TALK:Class;

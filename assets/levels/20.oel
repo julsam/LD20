@@ -612,10 +612,6 @@
     <tile tx="256" ty="0" x="192" y="320"/>
     <tile tx="240" ty="16" x="224" y="320"/>
     <tile tx="240" ty="16" x="208" y="320"/>
-    <tile tx="32" ty="80" x="336" y="272"/>
-    <tile tx="48" ty="80" x="352" y="272"/>
-    <tile tx="48" ty="96" x="352" y="288"/>
-    <tile tx="32" ty="96" x="336" y="288"/>
     <tile tx="192" ty="64" x="160" y="272"/>
     <tile tx="208" ty="64" x="176" y="272"/>
     <tile tx="208" ty="48" x="176" y="256"/>
@@ -656,11 +652,15 @@
     <tile tx="192" ty="48" x="208" y="176"/>
     <tile tx="192" ty="48" x="208" y="160"/>
     <tile tx="192" ty="48" x="208" y="144"/>
+    <tile tx="32" ty="80" x="32" y="272"/>
+    <tile tx="32" ty="96" x="32" y="288"/>
+    <tile tx="48" ty="96" x="48" y="288"/>
+    <tile tx="48" ty="80" x="48" y="272"/>
   </tilesAboveDeco>
   <objects>
     <treasure x="192" y="272" content="laserGun"/>
     <playerStart x="32" y="256"/>
-    <CP x="336" y="272" id="20"/>
+    <CP x="32" y="272" id="20"/>
     <TP x="0" y="272" destination="19"/>
     <TP x="0" y="288" destination="19"/>
     <TP_Arrival x="16" y="272" from="19"/>

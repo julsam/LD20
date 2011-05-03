@@ -17,7 +17,7 @@
     <rect x="560" y="32" w="16" h="16"/>
     <rect x="560" y="96" w="16" h="432"/>
     <rect x="736" y="32" w="16" h="64"/>
-    <rect x="736" y="144" w="16" h="304"/>
+    <rect x="736" y="144" w="16" h="400"/>
     <rect x="880" y="368" w="128" h="16"/>
     <rect x="992" y="32" w="16" h="336"/>
     <rect x="1008" y="384" w="16" h="208"/>
@@ -154,13 +154,6 @@
     <tile tx="256" ty="0" x="736" y="288"/>
     <tile tx="256" ty="0" x="736" y="304"/>
     <tile tx="256" ty="0" x="736" y="320"/>
-    <tile tx="256" ty="0" x="736" y="336"/>
-    <tile tx="256" ty="0" x="736" y="352"/>
-    <tile tx="256" ty="0" x="736" y="368"/>
-    <tile tx="256" ty="0" x="736" y="384"/>
-    <tile tx="256" ty="0" x="736" y="400"/>
-    <tile tx="256" ty="0" x="736" y="416"/>
-    <tile tx="256" ty="0" x="736" y="432"/>
     <tile tx="256" ty="0" x="912" y="368"/>
     <tile tx="256" ty="0" x="928" y="368"/>
     <tile tx="256" ty="0" x="944" y="368"/>
@@ -275,6 +268,19 @@
     <tile tx="256" ty="0" x="448" y="320"/>
     <tile tx="256" ty="0" x="448" y="336"/>
     <tile tx="256" ty="0" x="448" y="352"/>
+    <tile tx="256" ty="0" x="736" y="496"/>
+    <tile tx="256" ty="0" x="736" y="512"/>
+    <tile tx="256" ty="0" x="736" y="528"/>
+    <tile tx="224" ty="32" x="736" y="336"/>
+    <tile tx="224" ty="48" x="736" y="352"/>
+    <tile tx="224" ty="48" x="736" y="368"/>
+    <tile tx="224" ty="48" x="736" y="384"/>
+    <tile tx="224" ty="48" x="736" y="400"/>
+    <tile tx="224" ty="48" x="736" y="416"/>
+    <tile tx="224" ty="48" x="736" y="432"/>
+    <tile tx="224" ty="48" x="736" y="448"/>
+    <tile tx="224" ty="64" x="736" y="480"/>
+    <tile tx="224" ty="48" x="736" y="464"/>
   </tilesAbove>
   <tilesAboveDeco set="tileset" tileWidth="16" tileHeight="16">
     <tile tx="32" ty="80" x="32" y="208"/>
@@ -305,7 +311,7 @@
     <flyingMob x="640" y="96" speed="25">
       <node x="640" y="160"/>
     </flyingMob>
-    <canon1 x="240" y="32" bulletTimer="10" bulletSpeed="100"/>
+    <canon1 x="240" y="32" bulletTimer="2.5" bulletSpeed="100"/>
     <treasure x="944" y="352" content="gold"/>
     <spikes3 x="16" y="576"/>
     <spikes3 x="48" y="576"/>

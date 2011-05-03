@@ -485,7 +485,7 @@
     <TP x="240" y="0" destination="26"/>
     <TP_Arrival x="272" y="16" from="26"/>
     <CP x="736" y="192" id="16.2"/>
-    <playerStart x="272" y="80"/>
     <spikes3 x="224" y="448"/>
+    <playerStart x="96" y="432"/>
   </objects>
 </level>

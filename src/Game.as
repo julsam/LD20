@@ -70,7 +70,6 @@ package
 			if (Global.abilitiesCount >= Global.maxItems)
 			{
 				FP.world = new EndWorld();
-				trace("Game Over !");
 			}
 		}
 		
@@ -255,8 +254,10 @@ package
 		public function restartLevel():void
 		{
 			removeAll();
+			Global.previousLevel = Math.floor(Global.checkpointID);
 			loadLevel(Math.floor(Global.checkpointID));
 			
+			Global.currentLevel = Math.floor(Global.checkpointID);
 			Global.restartLevel = false;
 			Global.deaths++;
 		}

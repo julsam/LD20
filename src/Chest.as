@@ -27,10 +27,18 @@ package
 			{
 				if (Input.pressed("Interact") && !Global.abilities[_content])
 				{
-					Global.abilities[_content] = true;
-										
 					var dial:Dialog = new Dialog("", Global.player.x - 50,  Global.player.y - 50, false);
-					dial.text = "new ability : \n"+_content;
+					
+					if (_content == "gold" && !Global.abilities["doubleJump"])
+					{
+						dial.text = "Got a lot of \n"+_content+"\nOne more chest\n to get";
+					}
+					else
+					{
+						Global.abilities[_content] = true;
+										
+						dial.text = "new ability : \n"+_content;
+					}
 					this.world.add(dial);
 					
 					Global.abilitiesCount++;

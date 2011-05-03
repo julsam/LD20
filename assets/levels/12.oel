@@ -366,7 +366,7 @@
     <tile tx="96" ty="80" x="640" y="256"/>
   </tilesAboveDeco>
   <objects>
-    <door x="288" y="272" destination="14"/>
+    <door x="288" y="272" destination="11"/>
     <shop_panel x="272" y="208"/>
     <TP_Arrival x="304" y="272" from="11"/>
     <door x="624" y="272" destination="14"/>

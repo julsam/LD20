@@ -15,7 +15,7 @@ package
 			type = "Solid";
 			setHitbox(_w, _h);
 			
-			//hide us - we don't need to ever be updated or rendered
+			// don't need to be updated or rendered
 			active = false;
 			visible = false;
 		}
